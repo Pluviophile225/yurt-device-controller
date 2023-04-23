@@ -4,14 +4,15 @@ go 1.15
 
 require (
 	github.com/edgexfoundry/go-mod-core-contracts/v2 v2.1.0
+	github.com/edgexfoundry/go-mod-messaging/v3 v3.0.0-dev.25
 	github.com/go-resty/resty/v2 v2.4.0
 	github.com/jarcoal/httpmock v1.2.0
 	github.com/onsi/ginkgo v1.16.4
 	github.com/onsi/gomega v1.14.0
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
-	github.com/stretchr/testify v1.7.0
-	golang.org/x/net v0.0.0-20210428140749-89ef3d95e781
+	github.com/stretchr/testify v1.8.2
+	golang.org/x/net v0.9.0
 	k8s.io/apimachinery v0.21.3
 	k8s.io/client-go v0.21.3
 	k8s.io/klog/v2 v2.9.0

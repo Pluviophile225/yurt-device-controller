@@ -18,6 +18,7 @@ package controllers
 
 import (
 	"context"
+	"github.com/openyurtio/device-controller/pkg/cache"
 	"strings"
 	"time"
 
@@ -226,7 +227,9 @@ func (ds *DeviceSyncer) completeCreateContent(edgeDevice *devicev1alpha1.Device)
 // completeUpdateContent completes the content of the device which will be updated on OpenYurt
 func (ds *DeviceSyncer) completeUpdateContent(kubeDevice *devicev1alpha1.Device, edgeDevice *devicev1alpha1.Device) *devicev1alpha1.Device {
 	updatedDevice := kubeDevice.DeepCopy()
-	_, aps, _ := ds.deviceCli.ListPropertiesState(context.TODO(), updatedDevice, edgeCli.ListOptions{})
+	actualName := util.GetEdgeDeviceName(updatedDevice, EdgeXObjectName)
+	aps := cache.Commands().PropertyByDevice(actualName)
+	//_, aps, _ := ds.deviceCli.ListPropertiesState(context.TODO(), updatedDevice, edgeCli.ListOptions{})
 	// update device status
 	updatedDevice.Status.LastConnected = edgeDevice.Status.LastConnected
 	updatedDevice.Status.LastReported = edgeDevice.Status.LastReported
