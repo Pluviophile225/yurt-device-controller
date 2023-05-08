@@ -38,7 +38,7 @@ type commandCache struct {
 func (c *commandCache) Init() {
 	c.deviceCommandMap = make(map[string][]dtos.CoreCommand)
 	c.devicePropertyMap = make(map[string]map[string]devicev1alpha1.ActualPropertyState)
-
+	c.syncPeriod = 5000
 }
 
 func (c *commandCache) AllCommand(name string) []dtos.CoreCommand {
